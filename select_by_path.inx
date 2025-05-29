@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Select by path</name>
+  <id>org.inkscape.select_by_path</id>
+  <effect>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu name="Selection"/>
+    </effects-menu>
+  </effect>
+  <script>
+    <command location="inx" interpreter="python">select_by_path.py</command>
+  </script>
+  <param name="method" type="notebook">
+    <page name="touching" gui-text="Touching open path">
+        <param name="t_mode" type="optiongroup" gui-text="Selection mode" appearance="radio/combo">
+            <option value="replace" default="true">Replace</option>
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+        </param>
+        <param name="t_criteria" type="optiongroup" gui-text="Selection criteria" appearance="radio/combo">
+            <option value="bounding_box_center">Distance to bounding box center</option>
+            <option value="bounding_box_cross" default="true">Crossing bounding box</option>
+        </param>
+        <param name="t_include_hidden" type="boolean" gui-text="Include hidden/locked objects">false</param>
+        <param name="t_include_groups" type="boolean" gui-text="Include groups">false</param>
+        <param name="t_selection_tolerance" type="float" min="0" max="100" gui-text="Selection tolerance (px):">5</param>
+        <param name="t_bezier_tolerance" type="float" min="0" max="100" gui-text="Tolerance for Bezier intersection (px):">1e-6</param>
+    </page>
+    <page name="enclosed" gui-text="Enclosed by closed path">
+        <param name="e_mode" type="optiongroup" gui-text="Selection mode" appearance="radio/combo">
+            <option value="replace" default="true">Replace</option>
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+        </param>
+        <param name="e_criteria" type="optiongroup" gui-text="Selection criteria" appearance="radio/combo">
+                <option value="bounding_box_center" default="true">Bounding box center</option>
+                <option value="all_points">All bounding box corners</option>
+                <option value="any_point">Any bounding box corner</option>
+            </param>
+        <param name="e_include_hidden" type="boolean" gui-text="Include hidden/locked objects">false</param>
+        <param name="e_include_groups" type="boolean" gui-text="Include groups">false</param>
+        <param name="e_bezier_tolerance" type="float" min="0" max="100" gui-text="Tolerance for Bezier intersection (px):">1e-6</param>
+    </page>
+    <page name="advanced" gui-text="Advanced options">
+        <param name="sample_points" type="int" min="10" max="1000" gui-text="Sample points:">200</param>
+        <param name="dbus_delay_float" type="float" min="0" max="10" gui-text="DBus delay (s):">0.1</param>
+        <param name="debug" type="boolean" gui-text="Debug mode">false</param>
+        <param name="log_errors" type="boolean" gui-text="Log errors to stderr">false</param>
+    </page>
+  </param>
+</inkscape-extension>
+
