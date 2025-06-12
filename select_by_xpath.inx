@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Select objects by xpath</name>
+  <id>org.inkscape.select_by_xpath</id>
+  <effect>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu name="Selection"/>
+    </effects-menu>
+  </effect>
+  <script>
+    <command location="inx" interpreter="python">select_by_xpath.py</command>
+  </script>
+    <param name="xpath" type="string" _gui-text="XPath expression">//*[@class='']</param>
+    <param name="classname" type="string" _gui-text="Class name">class_name</param>
+    <param name="selection_mode"  type="optiongroup" gui-text="Selection mode" appearance="radio/combo">
+            <option value="replace" default="true">Replace selection</option>
+            <option value="add">Add to selection</option>
+            <option value="subtract">Subtract from selection</option>
+    </param>
+    <param name="dbus_delay" type="float" _gui-text="DBus delay (seconds)">0.1</param>
+    <param name="debug" type="boolean" _gui-text="Debug mode">False</param>
+</inkscape-extension>
