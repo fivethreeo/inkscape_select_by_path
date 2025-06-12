@@ -11,10 +11,6 @@ import subprocess
 
 import sys, os, shutil
 
-# print current working directory
-inkex.utils.debug(f"Current working directory: {os.getcwd()}")
-
-
 def get_attributes(obj):
     """ Returns a string containing all object attributes
          - One attribute per line
